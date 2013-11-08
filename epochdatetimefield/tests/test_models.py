@@ -1,8 +1,9 @@
 import datetime
+
 from django.utils import timezone
 from django.test import TestCase
 
-from epochdatetimefield.test.models import TestModel
+from .models import TestModel
 
 
 class EpochDateTimeFieldTest(TestCase):
