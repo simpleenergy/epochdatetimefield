@@ -1,0 +1,6 @@
+-r requirements.txt
+
+bumpversion
+check-manifest
+tox
+wheel

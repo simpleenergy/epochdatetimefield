@@ -36,10 +36,7 @@ setup(
     author_email='nick@simpleenergy.com',
     packages=[package for package in find_packages() if package.startswith('epochdatetimefield')],
     install_requires=[
-        'Django>=1.3',
-    ],
-    tests_require=[
-        'mock>=1.0.1',
+        'Django>=1.4',
     ],
     zip_safe=False,
     include_package_data=True,
