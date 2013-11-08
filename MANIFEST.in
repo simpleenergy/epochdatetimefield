@@ -1,3 +1,15 @@
+include *.py
+include *.txt
+include CHANGES
 include LICENSE
+include Makefile
 include README.rst
+include tox.ini
+recursive-include docs *.conf
+recursive-include docs *.css
+recursive-include docs *.css_t
+recursive-include docs *.html
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
 recursive-include epochdatetimefield/templates *
