@@ -1,7 +1,7 @@
 epochdatetimefield
 ------------------
 
-Epoch DateTime field for Django
+Epoch DateTime field for Django. Turns epoch timestamps into datetime objects in your python code.
 
 
 Installation
