@@ -81,7 +81,11 @@ class EpochDateTimeField(models.Field):
         """
         Casts datetimes into the format expected by the backend
         """
-        return float(value.strftime("%s"))
+        if not prepared:
+            value = self.get_prep_value(value)
+        if isinstance(value, (datetime.datetime, datetime.date)):
+            return float(value.strftime("%s"))
+        return value
 
     def formfield(self, **kwargs):
         """
