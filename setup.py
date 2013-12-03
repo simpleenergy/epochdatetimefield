@@ -11,9 +11,9 @@ App for Django to allow using datetime objects over integer fields.
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-STAGE = 'final'
+STAGE = 'alpha'
 
-version = (0, 0, 1, STAGE)
+version = (0, 1, 0, STAGE)
 
 
 def get_version():
