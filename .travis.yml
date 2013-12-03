@@ -6,12 +6,15 @@ python:
   - "2.7"
   - "2.6"
 env:
-  - DJANGO_PACKAGE=Django==1.4.8
-  - DJANGO_PACKAGE=Django==1.5.4
-  - DJANGO_PACKAGE=Django==1.6
-  - DB_BACKEND=sqlite
-  - DB_BACKEND=mysql
-  - DB_BACKEND=postgres
+  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=sqlite
+  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=sqlite
+  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=sqlite
+  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=mysql
+  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=mysql
+  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=mysql
+  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=postgresql
+  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=postgresql
+  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=postgresql
 install:
   - pip install MySQL-python
   - pip install psycopg2

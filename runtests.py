@@ -13,9 +13,6 @@ if os.environ.get('DB_BACKEND') == 'mysql':
         }
     }
 elif os.environ.get('DB_BACKEND') == 'postgres':
-    DATABASES={
-        'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory;'}
-    },
     DATABASES = {
         'default': {
             'NAME': 'test_db',
@@ -26,7 +23,7 @@ elif os.environ.get('DB_BACKEND') == 'postgres':
 else:
     DATABASES={
         'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory;'}
-    },
+    }
 
 settings.configure(
     DATABASES=DATABASES,
