@@ -3,7 +3,9 @@ import datetime
 from django.utils import timezone
 from django.test import TestCase
 
-from .models import TestModel
+from .models import (
+    TestModel, TestModelWithNullableField,
+)
 
 
 class EpochDateTimeFieldTest(TestCase):
@@ -41,3 +43,9 @@ class EpochDateTimeFieldTest(TestCase):
             token.test_field,
             self.date
         )
+
+
+class NullableFieldTest(TestCase):
+    def test_allows_null_value(self):
+        token = TestModelWithNullableField.objects.create()
+        self.assertTrue(TestModelWithNullableField.objects.filter(test_field__isnull=True).exists())
