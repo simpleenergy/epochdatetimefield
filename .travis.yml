@@ -1,26 +1,35 @@
 language: python
 services:
-  - mysql
-  - postgresql
+- mysql
+- postgresql
 python:
-  - "2.7"
-  - "2.6"
+- '2.7'
+- '2.6'
 env:
-  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=sqlite
-  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=sqlite
-  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=sqlite
-  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=mysql
-  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=mysql
-  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=mysql
-  - DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=postgresql
-  - DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=postgresql
-  - DJANGO_PACKAGE=Django==1.6 DB_BACKEND=postgresql
+- DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=sqlite
+- DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=sqlite
+- DJANGO_PACKAGE=Django==1.6 DB_BACKEND=sqlite
+- DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=mysql
+- DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=mysql
+- DJANGO_PACKAGE=Django==1.6 DB_BACKEND=mysql
+- DJANGO_PACKAGE=Django==1.4.8 DB_BACKEND=postgresql
+- DJANGO_PACKAGE=Django==1.5.4 DB_BACKEND=postgresql
+- DJANGO_PACKAGE=Django==1.6 DB_BACKEND=postgresql
 install:
-  - pip install MySQL-python
-  - pip install psycopg2
-  - pip install -q $DJANGO_PACKAGE --use-mirrors
-  - python setup.py install
+- pip install MySQL-python
+- pip install psycopg2
+- pip install -q $DJANGO_PACKAGE --use-mirrors
+- python setup.py install
 before_script:
-  - psql -c 'create database test_db;' -U postgres
-  - mysql -e 'create database test_db;'
+- psql -c 'create database test_db;' -U postgres
+- mysql -e 'create database test_db;'
 script: python runtests.py
+deploy:
+  provider: pypi
+  user: simpleenergy
+  password:
+    secure: fEgH46lnSF48uOEPHZDwSUzUQiHUwAX6sey7WdhC2ne9Y9ChI8mLJVAyZ7e0irobjWiGGvLNAPWDOiDRKJCgOCeRUJNHX24OpzibLWZ3PPIEQA8YUA8qdOhjBBWCIbdULiTUdrUCGwF7Q1V5rFdFUnRo+uhDFeT/Tg/Ka2a1eOU=
+  on:
+    tags: true
+    repo: simpleenergy/epochdatetimefield
+    branch: stable/0.1.x
