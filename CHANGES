@@ -1,0 +1,9 @@
+0.1.1
+-----
+
+* Version bump to test automated deployment on travis-ci.
+
+0.1.0
+-----
+
+* Fix bug where ``EpochDateTimeField`` could not handle ``null=True``.
