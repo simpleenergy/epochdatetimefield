@@ -5,7 +5,9 @@ from django.db import models
 from django import forms
 from django.core import exceptions
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+
 
 class EpochDateTimeField(models.Field):
     """
@@ -18,6 +20,9 @@ class EpochDateTimeField(models.Field):
     """
 
     __metaclass__ = models.SubfieldBase
+    default_error_messages = {
+        'invalid': _("'%(value)s' value was not parsable as a datetime."),
+    }
 
     def get_internal_type(self):
         """

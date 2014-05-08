@@ -2,6 +2,7 @@ import datetime
 
 from django.utils import timezone
 from django.test import TestCase
+from django.core import exceptions
 
 from .models import (
     TestModel, TestModelWithNullableField,
@@ -43,6 +44,11 @@ class EpochDateTimeFieldTest(TestCase):
             token.test_field,
             self.date
         )
+
+    def test_unparsable_value(self):
+        field, _, _, _ = TestModel._meta.get_field_by_name('test_field')
+        with self.assertRaises(exceptions.ValidationError):
+            field.to_python('12345/22/22')
 
 
 class NullableFieldTest(TestCase):
